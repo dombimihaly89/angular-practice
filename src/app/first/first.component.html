@@ -1,0 +1,54 @@
+<button mat-stroked-button color="accent" (click)="navigate('pokemon')">Pokemons</button>
+<button mat-stroked-button color="accent" (click)="navigate('dog')">Dogs</button>
+
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        First Component
+      </mat-panel-title>
+      <mat-panel-description>
+        Hide or show first component
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>First Number</mat-label>
+    <input matInput type="number" [(ngModel)] = "firstNumber" name="firstInput">
+  </mat-form-field>
+<br>
+<mat-form-field class="example-full-width">
+  <mat-label>Second Number</mat-label>
+  <input matInput type="number" [(ngModel)] = "secondNumber" name="secondInput">
+</mat-form-field>
+</form>
+<button mat-stroked-button color="primary" (click)=sum()>Sum</button>
+<br>
+<h3 *ngIf="sumVisible" [ngStyle]="{'background-color': sumOfTwoNumbers > 100 ? 'red' : 'green'}"> {{ sumOfTwoNumbers }}</h3>
+<hr>
+
+<mat-form-field>
+<mat-label>Some element</mat-label>
+<input (keyup.enter)="add()" matInput type="text" name="secondInput" [disabled]="!checked" [(ngModel)]="element">
+</mat-form-field>
+<mat-checkbox [(ngModel)]="checked">Checked</mat-checkbox>
+<br>
+<button mat-button color="primary" (click)=add() [disabled]="element.length < 3 || element.length > 13 || !canAddMoreElements">Add</button>
+<p *ngFor="let element of elements; let odd = odd" [ngStyle]="{color: odd ? 'purple' : 'black'}"> {{ element }}</p>
+<hr>
+</mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Second Component
+      </mat-panel-title>
+      <mat-panel-description>
+        Hide or show second component
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-second [elementsInSecondComponent] = "elements" (valueSend)=addValueFromSecondComponent($event)></app-second>
+  </mat-expansion-panel>
+</mat-accordion>

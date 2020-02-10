@@ -1,0 +1,9 @@
+<p > {{ elements[elements.length - 1] }} </p>
+<br>
+<mat-form-field>
+  <mat-label>Some more elements</mat-label>
+  <input (keyup.enter)="sendValueToFirstComponent()" matInput type="text" name="thirdInput" [(ngModel)]="newValue">
+</mat-form-field>
+<br>
+<button mat-raised-button color="accent" (click)="sendValueToFirstComponent()">Add value</button>
+

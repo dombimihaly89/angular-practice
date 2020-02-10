@@ -1,0 +1,21 @@
+<button mat-stroked-button color="accent" (click)="navigateBack()">Back</button>
+<h3 *ngIf="pokemons">Count: {{ pokemons.count }} </h3>
+<ul *ngIf="pokemons">
+  <li *ngFor="let pokemon of filterPokemons()" >
+    <div appBetterHighlight> {{ pokemon.name }} link: <a href="{{pokemon.url}}">{{ pokemon.url }}</a> </div>
+  </li>
+</ul>
+
+<form #pokemonForm="ngForm" class="example-form" (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width">
+    <mat-label>Pokemon's Name</mat-label>
+    <input matInput type="text" [(ngModel)] = "pokemonName" name="pokemonName" required>
+  </mat-form-field>
+<br>
+<mat-form-field class="example-full-width">
+  <mat-label>URL</mat-label>
+  <input matInput type="text" [(ngModel)] = "URL" name="URL" required>
+</mat-form-field>
+<br>
+<button mat-button color="primary" [disabled]="pokemonForm.invalid" type="submit" class="submit">Add Pokemon</button>
+</form>

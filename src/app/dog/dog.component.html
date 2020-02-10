@@ -1,0 +1,5 @@
+<button mat-stroked-button color="accent" (click)="navigateBack()">Back</button>
+<br>
+<button mat-stroked-button color="primary" (click)="showDog()">Show me some dog</button>
+<br>
+<img *ngIf="dogShow" src="{{ dog.message }}" alt="doggo" height="300" width="400">
